@@ -1,0 +1,9 @@
+<div class="px-4 xl:px-0 w-full max-w-[1200px] m-auto">
+  <app-search-bar (changeQuery)="changeQuery($event)" />
+  <section class="grid grid-cols-3 gap-8 mt-8">
+    <!--  El pipe async se usa para suscribirse automáticamente a un observable y obtener los datos. -->
+    @for (contact of contacts$ | async; track contact.id) {
+    <app-card-contact [contact]="contact" (deleteContact)="deleteContact($event)" (editContact)="editContact($event)" />
+    }
+  </section>
+</div>
